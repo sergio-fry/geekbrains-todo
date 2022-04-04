@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'events/index'
-  get 'events', to: 'events#search', query: 'Moscow'
-  get 'events/:query', to: 'events#search'
-
   get 'about/index'
 
   get 'not_found', to: redirect('/', status: 302)
@@ -14,4 +10,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  # match 'detect', to: 'home#detect', via: [:get, :post, :delete]
 end
