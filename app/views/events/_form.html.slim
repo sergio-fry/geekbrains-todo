@@ -1,0 +1,18 @@
+= form_with(model: @event) do |form|
+  - if @event.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@event.errors.count, 'error')} prohibited this event from being saved:"
+      ul
+        - @event.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :title, style: "display: block"
+    = form.text_field :title
+
+  div
+    = form.label :scheduled_at, style: "display: block"
+    = form.datetime_field :scheduled_at
+
+  div
+    = form.submit

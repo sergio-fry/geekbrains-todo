@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get 'about/index'
 
   get 'not_found', to: redirect('/', status: 302)
