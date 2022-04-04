@@ -71,4 +71,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "slim", "~> 4.1"
+gem "slim-rails"

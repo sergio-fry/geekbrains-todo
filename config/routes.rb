@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'events/index'
   get 'home2', to: 'home#index', as: :second_home
   get 'home', to: 'home#index'
   get 'home/index'
