@@ -9,3 +9,7 @@
 role = Role.find_or_initialize_by(code: 'admin')
 role.name = "Admin"
 role.save
+
+role = Role.find_or_initialize_by(code: 'user')
+role.name = "User"
+role.save

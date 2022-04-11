@@ -30,11 +30,13 @@ namespace :fake do
 
   task users: :environment do
     User.destroy_all
+    roles = Role.all.to_a
+
     10.times do
       User.create!(
         name: FFaker::Name.name,
         email: FFaker::Internet.email,
-        role_id: Role.find_by(code: 'admin').id
+        role_id: roles.sample.id
       )
     end
   end
