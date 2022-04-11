@@ -1,0 +1,78 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/Users/sergei/code/geekbrains/todo/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+APP_PATH	bin/rails	/^APP_PATH = File.expand_path("..\/config\/application", __dir__)$/;"	C
+APP_ROOT	bin/setup	/^APP_ROOT = File.expand_path("..", __dir__)$/;"	C
+AboutController	app/controllers/about_controller.rb	/^class AboutController < ApplicationController$/;"	c
+AnonymousClass84762e030101	app/javascript/controllers/hello_controller.js	/^export default class extends Controller {$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	module:Todo
+ApplicationCable	app/channels/application_cable/channel.rb	/^module ApplicationCable$/;"	m
+ApplicationCable	app/channels/application_cable/connection.rb	/^module ApplicationCable$/;"	m
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ApplicationJob	app/jobs/application_job.rb	/^class ApplicationJob < ActiveJob::Base$/;"	c
+ApplicationMailer	app/mailers/application_mailer.rb	/^class ApplicationMailer < ActionMailer::Base$/;"	c
+ApplicationRecord	app/models/application_record.rb	/^class ApplicationRecord < ActiveRecord::Base$/;"	c
+ApplicationSystemTestCase	test/application_system_test_case.rb	/^class ApplicationSystemTestCase < ActionDispatch::SystemTestCase$/;"	c
+Channel	app/channels/application_cable/channel.rb	/^  class Channel < ActionCable::Channel::Base$/;"	c	module:ApplicationCable
+Connection	app/channels/application_cable/connection.rb	/^  class Connection < ActionCable::Connection::Base$/;"	c	module:ApplicationCable
+ConnectionTest	test/channels/application_cable/connection_test.rb	/^class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase$/;"	c	module:ApplicationCable
+CreateEvents	db/migrate/20220407182800_create_events.rb	/^class CreateEvents < ActiveRecord::Migration[7.0]$/;"	c
+CreateItems	db/migrate/20220407183241_create_items.rb	/^class CreateItems < ActiveRecord::Migration[7.0]$/;"	c
+CreateRoles	db/migrate/20220407183823_create_roles.rb	/^class CreateRoles < ActiveRecord::Migration[7.0]$/;"	c
+CreateUsers	db/migrate/20220411171924_create_users.rb	/^class CreateUsers < ActiveRecord::Migration[7.0]$/;"	c
+Event	app/models/event.rb	/^class Event < ApplicationRecord$/;"	c
+EventsController	app/controllers/events_controller.rb	/^class EventsController < ApplicationController$/;"	c
+EventsHelper	app/helpers/events_helper.rb	/^module EventsHelper$/;"	m
+HomeController	app/controllers/home_controller.rb	/^class HomeController < ApplicationController$/;"	c
+HomeHelper	app/helpers/home_helper.rb	/^module HomeHelper$/;"	m
+Item	app/models/item.rb	/^class Item < ApplicationRecord$/;"	c
+README	README.md	/^# README$/;"	c
+Role	app/models/role.rb	/^class Role < ApplicationRecord$/;"	c
+TestCase	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c	module:ActiveSupport
+The change you wanted was rejected (422)	public/422.html	/^  <title>The change you wanted was rejected (422)<\/title>$/;"	j
+The change you wanted was rejected.	public/422.html	/^      <h1>The change you wanted was rejected.<\/h1>$/;"	h
+The page you were looking for doesn't exist (404)	public/404.html	/^  <title>The page you were looking for doesn't exist (404)<\/title>$/;"	j
+The page you were looking for doesn't exist.	public/404.html	/^      <h1>The page you were looking for doesn't exist.<\/h1>$/;"	h
+Todo	config/application.rb	/^module Todo$/;"	m
+User	app/models/user.rb	/^class User < ApplicationRecord$/;"	c
+We're sorry, but something went wrong (500)	public/500.html	/^  <title>We're sorry, but something went wrong (500)<\/title>$/;"	j
+We're sorry, but something went wrong.	public/500.html	/^      <h1>We're sorry, but something went wrong.<\/h1>$/;"	h
+activate_bundler	bin/bundle	/^  def activate_bundler$/;"	f
+activation_error_handling	bin/bundle	/^  def activation_error_handling$/;"	f
+application	app/javascript/controllers/application.js	/^const application = Application.start()$/;"	C
+bundler_requirement	bin/bundle	/^  def bundler_requirement$/;"	f
+bundler_requirement_for	bin/bundle	/^  def bundler_requirement_for(version)$/;"	f
+change	db/migrate/20220407182800_create_events.rb	/^  def change$/;"	f	class:CreateEvents
+change	db/migrate/20220407183241_create_items.rb	/^  def change$/;"	f	class:CreateItems
+change	db/migrate/20220407183823_create_roles.rb	/^  def change$/;"	f	class:CreateRoles
+change	db/migrate/20220411171924_create_users.rb	/^  def change$/;"	f	class:CreateUsers
+cli_arg_version	bin/bundle	/^  def cli_arg_version$/;"	f
+connect	app/javascript/controllers/hello_controller.js	/^  connect() {$/;"	m	class:AnonymousClass84762e030101
+create	app/controllers/events_controller.rb	/^  def create$/;"	f	class:EventsController
+default	config/database.yml	/^default: &default$/;"	a
+destroy	app/controllers/events_controller.rb	/^  def destroy$/;"	f	class:EventsController
+edit	app/controllers/events_controller.rb	/^  def edit$/;"	f	class:EventsController
+env_var_version	bin/bundle	/^  def env_var_version$/;"	f
+event_params	app/controllers/events_controller.rb	/^    def event_params$/;"	f	class:EventsController
+gemfile	bin/bundle	/^  def gemfile$/;"	f
+index	app/controllers/about_controller.rb	/^  def index$/;"	f	class:AboutController
+index	app/controllers/events_controller.rb	/^  def index$/;"	f	class:EventsController
+index	app/controllers/home_controller.rb	/^  def index$/;"	f	class:HomeController
+invoked_as_script?	bin/bundle	/^  def invoked_as_script?$/;"	f
+load_bundler!	bin/bundle	/^  def load_bundler!$/;"	f
+lockfile	bin/bundle	/^  def lockfile$/;"	f
+lockfile_version	bin/bundle	/^  def lockfile_version$/;"	f
+new	app/controllers/events_controller.rb	/^  def new$/;"	f	class:EventsController
+set_event	app/controllers/events_controller.rb	/^    def set_event$/;"	f	class:EventsController
+show	app/controllers/events_controller.rb	/^  def show$/;"	f	class:EventsController
+system!	bin/setup	/^def system!(*args)$/;"	f
+update	app/controllers/events_controller.rb	/^  def update$/;"	f	class:EventsController
