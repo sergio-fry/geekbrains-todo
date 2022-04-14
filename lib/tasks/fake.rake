@@ -9,18 +9,16 @@ namespace :fake do
     User.all.each do |user|
       rand(3..5).times do
         done = FFaker::Boolean.random
-        event = Event.create!(
+        event = user.events.create!(
           name: FFaker::Lorem.sentence[0..25],
           content: FFaker::Lorem.sentence,
           done: done,
-          finished_at: done ? FFaker::Time.datetime : nil,
-          user_id: user.id
+          finished_at: done ? FFaker::Time.datetime : nil
         )
 
         rand(3..5).times do
-          Item.create!(
+          event.items.create!(
             name: FFaker::Lorem.sentence[0..25],
-            event_id: event.id,
             done: event.done? ? true : FFaker::Boolean.random
           )
         end
@@ -33,10 +31,9 @@ namespace :fake do
     roles = Role.all.to_a
 
     10.times do
-      User.create!(
+      roles.sample.users.create!(
         name: FFaker::Name.name,
         email: FFaker::Internet.email,
-        role_id: roles.sample.id
       )
     end
   end
