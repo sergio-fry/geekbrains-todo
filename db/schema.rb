@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_175641) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_14_180840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_175641) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "events_tags", id: false, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "tag_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "done", default: false, null: false
@@ -54,6 +59,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_175641) do
   create_table "roles", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

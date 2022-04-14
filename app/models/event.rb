@@ -9,8 +9,10 @@ class Event < ApplicationRecord
   # do not use please
   # default_scope -> { where('created_at < ?', Time.now) }
 
-  belongs_to :user
+  belongs_to :user, -> { where(state: :active) }
   has_many :items
 
   has_many :comments, as: :commentable
+
+  has_and_belongs_to_many :tags
 end
