@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_171525) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_14_175641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -22,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_171525) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "comments_count"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -56,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_171525) do
     t.datetime "updated_at", null: false
     t.json "settings", default: "{\"notifications\": false}", null: false
     t.integer "state"
+    t.integer "comments_count"
   end
 
   add_foreign_key "items", "events"

@@ -14,4 +14,8 @@ class User < ApplicationRecord
   has_one :profile
   has_many :events
   has_many :items, through: :events
+
+  has_many :comments, as: :commentable
+
+  has_many :reviews, class_name: "Comment", through: :events, source: :comments
 end
