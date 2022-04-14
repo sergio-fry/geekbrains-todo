@@ -8,4 +8,7 @@ class Event < ApplicationRecord
 
   # do not use please
   # default_scope -> { where('created_at < ?', Time.now) }
+
+  belongs_to :user
+  has_many :items
 end

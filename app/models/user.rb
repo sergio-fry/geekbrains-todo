@@ -9,4 +9,9 @@ class User < ApplicationRecord
 
   # enum :state, [:initial, :active, :suspended] # do not use please
   enum :state, { active: 1, suspended: 2 }
+
+  belongs_to :role
+  has_one :profile
+  has_many :events
+  has_many :items, through: :events
 end
