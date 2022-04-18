@@ -39,6 +39,8 @@ class User < ApplicationRecord
   private
 
   def check_freshness
+    return true unless persisted?
+
     if load_time < 10.seconds.ago
       raise ActiveRecord::RecordInvalid
     end

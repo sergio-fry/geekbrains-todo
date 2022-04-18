@@ -38,7 +38,7 @@ namespace :fake do
     User.destroy_all
     roles = Role.all.to_a
 
-    10.times do
+    ENV.fetch('COUNT', '10').to_i.times do
       roles.sample.users.create!(
         name: FFaker::Name.name,
         email: FFaker::Internet.email,
