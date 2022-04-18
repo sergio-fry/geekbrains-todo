@@ -11,6 +11,7 @@ class User < ApplicationRecord
   enum :state, { active: 1, suspended: 2 }
 
   belongs_to :role
+
   has_one :profile
   has_many :events
   has_many :items, through: :events
@@ -18,4 +19,49 @@ class User < ApplicationRecord
   has_many :comments, as: :commentable
 
   has_many :reviews, class_name: "Comment", through: :events, source: :comments
+
+  before_validation :set_default_role
+
+  after_create -> { logger.info "Created" }
+  after_save -> { logger.info "Saved" }
+
+  # after_save -> { logger.info "Created" }, if: -> { role.code == 'admin' }
+  # after_save -> { logger.info "Created" }, only: [:created]
+
+  around_save :save_wrapper
+
+  after_find :set_load_time
+
+  attr_reader :load_time
+
+  before_save :check_freshness
+
+  private
+
+  def check_freshness
+    if load_time < 10.seconds.ago
+      raise ActiveRecord::RecordInvalid
+    end
+  end
+
+  def set_load_time
+    @load_time = Time.now
+  end
+
+
+  def save_wrapper
+    logger.info "Before save"
+
+    yield
+
+    logger.info "After save"
+  end
+
+  def log_creation
+    puts 12
+  end
+
+  def set_default_role
+    self.role ||= Role.find_by code: :user
+  end
 end
