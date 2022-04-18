@@ -1,0 +1,13 @@
+h1 Stats#index
+
+table
+  tr
+    th User
+
+  - @users.each do |user|
+    tr
+      td
+        = user.name
+      td
+        = user.events.count
+

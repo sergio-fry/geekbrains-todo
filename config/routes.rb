@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'stats/index'
   resources :events
   get 'about/index'
 
