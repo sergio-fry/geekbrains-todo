@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:role) { Role.find_by code: :user }
-  let(:user) { User.create! name: "Ivan", role: role }
+  let(:user) { create :user }
 
   it { expect(user.persisted?).to eq true }
 
@@ -14,6 +13,18 @@ RSpec.describe User, type: :model do
   # 3. refactor
 
   describe '#fancy_role' do
+    let(:user) { build :user }
     it { expect(user.fancy_role).to eq "Fancy role 'user'" }
+  end
+
+  describe 'email' do
+
+    it "create multiple" do
+      user1 = create :user
+      user2 = create :user
+
+      expect(user1).to be_persisted
+      expect(user2).to be_persisted
+    end
   end
 end

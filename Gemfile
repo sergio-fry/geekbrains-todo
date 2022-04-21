@@ -51,6 +51,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails", "~> 5.1"
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -79,4 +81,3 @@ gem "pg", "~> 1.3"
 
 gem "kaminari", "~> 1.2"
 
-gem "rspec-rails", "~> 5.1"

@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   validates :name, length: { maximum: 100 }, presence: true
 
+  validates :email, uniqueness: true
+
   scope :admins, -> { where(role_id: Role.find_by(code: 'user')) }
 
   store :settings, accessors: [:notifications, :site], coder: JSON, prefix: :settings
