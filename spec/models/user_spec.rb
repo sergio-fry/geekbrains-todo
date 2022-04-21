@@ -39,4 +39,22 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_one(:profile) }
   end
+
+  xdescribe '#check_freshness' do
+    before { User.delete_all }
+    before { @id = create(:user, email: 'bar@foo').id }
+    let(:user) { User.find @id }
+
+    context 'when sleep a little' do
+      before { sleep 0.5 }
+      before { user.update email: 'foo@bar' }
+      it { expect(user.reload.email).to eq 'foo@bar'}
+    end
+
+    context 'when sleep too long' do
+      before { sleep 3 }
+      before { user.update email: 'foo@bar' }
+      it { expect(user.reload.email).to eq 'bar@foo'}
+    end
+  end
 end

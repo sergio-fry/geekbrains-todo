@@ -47,13 +47,14 @@ class User < ApplicationRecord
   def check_freshness
     return true unless persisted?
 
-    if load_time < 10.seconds.ago
+    if load_time < 1.seconds.ago
       raise ActiveRecord::RecordInvalid
     end
   end
 
   def set_load_time
     @load_time = Time.now
+    Rails.logger.debug "Set load time: #{@load_time}"
   end
 
 
