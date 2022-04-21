@@ -75,6 +75,7 @@ group :test do
   gem "webdrivers"
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', require: false
+  gem 'rails-controller-testing'
 end
 
 gem "slim-rails"
