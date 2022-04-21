@@ -27,4 +27,12 @@ RSpec.describe User, type: :model do
       expect(user2).to be_persisted
     end
   end
+
+  context do
+    let(:user) { create :user }
+    let(:admin) { create :user, :admin }
+
+    it { expect(user.role.code).to eq 'user' }
+    it { expect(admin.role.code.to_sym).to eq :admin }
+  end
 end
