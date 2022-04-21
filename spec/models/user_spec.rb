@@ -35,4 +35,8 @@ RSpec.describe User, type: :model do
     it { expect(user.role.code).to eq 'user' }
     it { expect(admin.role.code.to_sym).to eq :admin }
   end
+
+  describe 'associations' do
+    it { should have_one(:profile) }
+  end
 end
