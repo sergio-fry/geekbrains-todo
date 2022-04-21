@@ -36,6 +36,10 @@ class User < ApplicationRecord
 
   before_save :check_freshness
 
+  def fancy_role
+    "Fancy role '#{role.code}'"
+  end
+
   private
 
   def check_freshness
