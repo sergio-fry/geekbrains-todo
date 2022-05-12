@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   # default_scope -> { where('created_at < ?', Time.now) }
 
   belongs_to :user, -> { where(state: :active) }
-  has_many :items
+  has_many :items, dependent: :destroy
 
   has_many :comments, as: :commentable
 

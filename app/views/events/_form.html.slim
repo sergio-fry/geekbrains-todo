@@ -7,12 +7,12 @@
           li = error.full_message
 
   div
-    = form.label :title, style: "display: block"
-    = form.text_field :title
+    = form.label :name, style: "display: block"
+    = form.text_field :name
 
   div
-    = form.label :scheduled_at, style: "display: block"
-    = form.datetime_field :scheduled_at
+    = form.label :finished_at, style: "display: block"
+    = form.datetime_field :finished_at  
 
   div
     = form.submit

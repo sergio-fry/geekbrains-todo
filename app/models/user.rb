@@ -47,6 +47,10 @@ class User < ApplicationRecord
     "Fancy role '#{role.code}'"
   end
 
+  def has_role?(code)
+    role.code.to_sym == code.to_sym
+  end
+
   private
 
   def check_freshness
