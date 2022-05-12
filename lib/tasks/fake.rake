@@ -7,6 +7,7 @@ namespace :fake do
     Event.destroy_all
 
     User.all.each do |user|
+      print '.'
       rand(3..5).times do
         done = FFaker::Boolean.random
         event = user.events.create!(
@@ -42,6 +43,7 @@ namespace :fake do
       roles.sample.users.create!(
         name: FFaker::Name.name,
         email: FFaker::Internet.email,
+        password: 'secret123', 
         state: :active
       )
     end

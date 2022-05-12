@@ -9,5 +9,13 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    = link_to "Stats", controller: :stats
+    p.notice= notice
+    p.alert= alert
+    header
+      - if user_signed_in?
+        = "#{t('hello')} #{current_user.email}!"
+        = link_to 'logout', destroy_user_session_path, method: :delete, 'data-turbo-method': :delete
+
+
+    = link_to "Events", events_path
     = yield
