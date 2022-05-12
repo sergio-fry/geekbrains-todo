@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   scope :admins, -> { where(role_id: Role.find_by(code: 'user')) }
 
-  store :settings, accessors: [:notifications, :site], coder: JSON, prefix: :settings
+  store :settings, accessors: [:notifications, :site, :locale], coder: JSON, prefix: :settings
 
   # validates :site, presence: true
 
