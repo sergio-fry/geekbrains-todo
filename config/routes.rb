@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'newone/index'
 
   resources :users
   get 'users/page/:page', to: 'users#index'

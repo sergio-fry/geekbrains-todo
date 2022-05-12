@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   validates :name, length: { maximum: 100 }, presence: true
 
+  validates :email, uniqueness: true
+
   scope :admins, -> { where(role_id: Role.find_by(code: 'user')) }
 
   store :settings, accessors: [:notifications, :site], coder: JSON, prefix: :settings
@@ -36,18 +38,23 @@ class User < ApplicationRecord
 
   before_save :check_freshness
 
+  def fancy_role
+    "Fancy role '#{role.code}'"
+  end
+
   private
 
   def check_freshness
     return true unless persisted?
 
-    if load_time < 10.seconds.ago
+    if load_time < 1.seconds.ago
       raise ActiveRecord::RecordInvalid
     end
   end
 
   def set_load_time
     @load_time = Time.now
+    Rails.logger.debug "Set load time: #{@load_time}"
   end
 
 
