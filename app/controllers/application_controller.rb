@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def switch_locale(&action)
-    locale = current_user.settings_locale || I18n.default_locale
-    I18n.with_locale(locale, &action)
+    if user_signed_in?
+      locale = current_user.settings_locale || I18n.default_locale
+      I18n.with_locale(locale, &action)
+    else
+      yield
+    end
   end
 end
