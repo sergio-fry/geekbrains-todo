@@ -3,25 +3,29 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    @events = policy_scope(Event).page(params[:page]).per(10)
   end
 
   # GET /events/1 or /events/1.json
   def show
+    authorize @event
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    authorize @event
   end
 
   # GET /events/1/edit
   def edit
+    authorize @event
   end
 
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
+    authorize @event
 
     respond_to do |format|
       if @event.save
@@ -36,6 +40,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    authorize @event
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to event_url(@event), notice: "Event was successfully updated." }
@@ -49,6 +54,7 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
+    authorize @event
     @event.destroy
 
     respond_to do |format|
@@ -60,7 +66,7 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event = policy_scope(Event).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

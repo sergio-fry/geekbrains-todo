@@ -66,6 +66,7 @@ group :development do
   # gem "spring"
   gem "ffaker"
   gem 'rails-erd'
+  gem "letter_opener"
 end
 
 group :test do
@@ -84,3 +85,7 @@ gem "pg", "~> 1.3"
 
 gem "kaminari", "~> 1.2"
 
+
+gem "devise", "~> 4.8"
+
+gem "pundit", "~> 2.2"

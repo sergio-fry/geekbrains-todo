@@ -1,11 +1,30 @@
 Rails.application.routes.draw do
-  resources :cars
+  namespace :admin do
+    resources :users
+
+    root "users#index"
+  end
+
+  devise_for :users
+
+  resources :cars do
+    resources :comments
+    resources :about
+  end
+
+
   get 'newone/index'
 
-  resources :users
-  get 'users/page/:page', to: 'users#index'
-  resources :events
 
+  resources :users do
+    resource :profile
+  end
+
+  get 'users/page/:page', to: 'users#index'
+
+  resources :events do
+    resources :items
+  end
 
   # stats#show
   resource :stats, only: :show

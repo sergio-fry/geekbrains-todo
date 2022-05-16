@@ -1,11 +1,16 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
   validates :name, length: { maximum: 100 }, presence: true
 
   validates :email, uniqueness: true
 
   scope :admins, -> { where(role_id: Role.find_by(code: 'user')) }
 
-  store :settings, accessors: [:notifications, :site], coder: JSON, prefix: :settings
+  store :settings, accessors: [:notifications, :site, :locale], coder: JSON, prefix: :settings
 
   # validates :site, presence: true
 
@@ -40,6 +45,10 @@ class User < ApplicationRecord
 
   def fancy_role
     "Fancy role '#{role.code}'"
+  end
+
+  def has_role?(code)
+    role.code.to_sym == code.to_sym
   end
 
   private

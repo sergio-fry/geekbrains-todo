@@ -11,10 +11,7 @@ default: &default
 
 development:
   <<: *default
-  adapter: postgresql
-  host: 0.0.0.0
-  username: postgres
-  database: todo_dev
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
