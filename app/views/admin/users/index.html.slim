@@ -1,0 +1,13 @@
+p style="color: green" = notice
+
+h1 Users
+
+table#admin_users
+  - @admin_users.each do |user|
+    tr
+      td= user.name
+      td= user.email
+      td= user.role.name
+      td= link_to "Show this user", admin_user_path(user)
+
+= link_to "New user", new_admin_user_path
