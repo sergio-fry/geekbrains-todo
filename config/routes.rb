@@ -26,10 +26,8 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  # stats#show
-  resource :stats, only: :show
 
-  get 'stats/index'
+  get 'stats/index', as: :stats
   get 'about/index'
 
   get 'not_found', to: redirect('/', status: 302)
