@@ -13,6 +13,8 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/admin/users", type: :request do
+  let(:admin) { create :user, :admin }
+  before { sign_in admin }
   
   # This should return the minimal set of attributes required to create a valid
   # Admin::User. As you add validations to Admin::User, be sure to
@@ -27,7 +29,7 @@ RSpec.describe "/admin/users", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Admin::User.create! valid_attributes
+      User.create! valid_attributes
       get admin_users_url
       expect(response).to be_successful
     end
@@ -35,7 +37,7 @@ RSpec.describe "/admin/users", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
-      user = Admin::User.create! valid_attributes
+      user = User.create! valid_attributes
       get admin_user_url(user)
       expect(response).to be_successful
     end
@@ -50,7 +52,7 @@ RSpec.describe "/admin/users", type: :request do
 
   describe "GET /edit" do
     it "renders a successful response" do
-      user = Admin::User.create! valid_attributes
+      user = User.create! valid_attributes
       get edit_admin_user_url(user)
       expect(response).to be_successful
     end
@@ -58,23 +60,23 @@ RSpec.describe "/admin/users", type: :request do
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Admin::User" do
+      it "creates a new User" do
         expect {
           post admin_users_url, params: { admin_user: valid_attributes }
-        }.to change(Admin::User, :count).by(1)
+        }.to change(User, :count).by(1)
       end
 
       it "redirects to the created admin_user" do
         post admin_users_url, params: { admin_user: valid_attributes }
-        expect(response).to redirect_to(admin_user_url(Admin::User.last))
+        expect(response).to redirect_to(admin_user_url(User.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new Admin::User" do
+      it "does not create a new User" do
         expect {
           post admin_users_url, params: { admin_user: invalid_attributes }
-        }.to change(Admin::User, :count).by(0)
+        }.to change(User, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
@@ -91,14 +93,14 @@ RSpec.describe "/admin/users", type: :request do
       }
 
       it "updates the requested admin_user" do
-        user = Admin::User.create! valid_attributes
+        user = User.create! valid_attributes
         patch admin_user_url(user), params: { admin_user: new_attributes }
         user.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the admin_user" do
-        user = Admin::User.create! valid_attributes
+        user = User.create! valid_attributes
         patch admin_user_url(user), params: { admin_user: new_attributes }
         user.reload
         expect(response).to redirect_to(admin_user_url(user))
@@ -107,7 +109,7 @@ RSpec.describe "/admin/users", type: :request do
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        user = Admin::User.create! valid_attributes
+        user = User.create! valid_attributes
         patch admin_user_url(user), params: { admin_user: invalid_attributes }
         expect(response).to be_successful
       end
@@ -116,14 +118,14 @@ RSpec.describe "/admin/users", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested admin_user" do
-      user = Admin::User.create! valid_attributes
+      user = User.create! valid_attributes
       expect {
         delete admin_user_url(user)
-      }.to change(Admin::User, :count).by(-1)
+      }.to change(User, :count).by(-1)
     end
 
     it "redirects to the admin_users list" do
-      user = Admin::User.create! valid_attributes
+      user = User.create! valid_attributes
       delete admin_user_url(user)
       expect(response).to redirect_to(admin_users_url)
     end

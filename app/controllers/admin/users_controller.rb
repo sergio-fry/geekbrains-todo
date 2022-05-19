@@ -14,6 +14,7 @@ module Admin
     # GET /admin/users/new
     def new
       @admin_user = User.new
+      authorize @admin_user
     end
 
     # GET /admin/users/1/edit
