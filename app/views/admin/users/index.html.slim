@@ -2,12 +2,11 @@ p style="color: green" = notice
 
 h1 Users
 
+
 table#admin_users
-  - @admin_users.each do |user|
-    tr
-      td= user.name
-      td= user.email
-      td= user.role.name
-      td= link_to "Show this user", admin_user_path(user)
+  = render partial: 'user_in_a_list', collection: @users, as: :user
 
 = link_to "New user", new_admin_user_path
+
+div
+  = time_ago_in_words(3.minutes.from_now)  

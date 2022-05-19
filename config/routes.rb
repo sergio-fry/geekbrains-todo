@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resource :profile
   end
 
-  get 'users/page/:page', to: 'users#index'
+  get 'users/page/:page', to: 'users#index', as: :users_page
 
   resources :events do
     resources :items

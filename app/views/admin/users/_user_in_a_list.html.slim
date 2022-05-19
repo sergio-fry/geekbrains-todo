@@ -1,0 +1,5 @@
+tr id=dom_id(user)
+  td= user.name
+  td= user.email
+  td= user.role.name
+  td= link_to "Show this user", admin_user_path(user)
