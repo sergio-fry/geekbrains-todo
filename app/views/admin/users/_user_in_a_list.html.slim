@@ -1,4 +1,4 @@
-tr id=dom_id(user) style="background-color: #{index.odd? ? '#aaa' : '#fff'}"
+tr id=dom_id(user) style="background-color: #{cycle('#aaa', '#fff')}"
   td= user.name
   td= user.email
   td= user.role.name

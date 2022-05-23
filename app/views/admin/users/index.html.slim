@@ -4,8 +4,8 @@ h1 Users
 
 
 table#admin_users
-  - @users.each_with_index do |user, index|
-    = render partial: 'user_in_a_list', locals: { user: user, index: index }
+  - @users.each do |user|
+    = render partial: 'user_in_a_list', locals: { user: user }
 
 = link_to "New user", new_admin_user_path
 
