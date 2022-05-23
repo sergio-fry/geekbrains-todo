@@ -17,11 +17,8 @@ html
         = link_to 'logout', destroy_user_session_path, method: :delete, 'data-turbo-method': :delete
 
 
-    = link_to "Events", events_path
-    == "&nbsp;"
-    = link_to "Stats", stats_path
-    = yield
+      =< link_to "Events", events_path
+      == "&nbsp;"
+      = link_to "Stats", stats_path
+      = yield
 
-      
-    div class="container"
-    div.container.bold#div1 Div1

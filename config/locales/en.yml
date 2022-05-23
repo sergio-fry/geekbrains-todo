@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello"
+  about: About
+  home: home
+  current_time_is: Current time is

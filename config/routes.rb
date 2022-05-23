@@ -28,7 +28,11 @@ Rails.application.routes.draw do
 
 
   get 'stats/index', as: :stats
-  get 'about/index'
+  get 'about/index', as: :about
+
+  scope ':locale' do
+    get 'about/index'
+  end
 
   get 'not_found', to: redirect('/', status: 302)
   get 'rack', to: ->(_) { [200, {}, ["hello rack"]] }

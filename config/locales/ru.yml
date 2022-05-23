@@ -31,3 +31,14 @@
 
 ru:
   hello: "Привет"
+  about: О сайте
+  home: домой
+  current_time_is: Сейчас у нас
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
+
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
