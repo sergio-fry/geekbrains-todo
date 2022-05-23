@@ -7,6 +7,5 @@ div
 
 br
 
-=> link_to "en", locale: :en
-= link_to "ru", locale: :ru
+=> link_to "#{t('switch_to')} #{another_locale}", controller: :locales, action: :switch, locale: another_locale
 
