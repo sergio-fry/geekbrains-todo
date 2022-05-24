@@ -1,3 +1,17 @@
-h1
-  | About
-= link_to "Home", root_path
+h1= t('.title')
+
+= link_to t("home"), root_path
+
+div
+  | #{t('current_time', time: l(@time_now))}
+
+
+div
+  | #{t('article_has')} #{@count} #{t('comment', count: @count)}
+
+div= @user.errors.messages
+
+br
+
+=> link_to "#{t('switch_to')} #{another_locale}", controller: :locales, action: :switch, locale: another_locale
+

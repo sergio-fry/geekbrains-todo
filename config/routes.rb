@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'locales/switch'
+
   namespace :admin do
     resources :users
 
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
 
 
   get 'stats/index', as: :stats
-  get 'about/index'
+  get 'about/index', as: :about
 
   get 'not_found', to: redirect('/', status: 302)
   get 'rack', to: ->(_) { [200, {}, ["hello rack"]] }

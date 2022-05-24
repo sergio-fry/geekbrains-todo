@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello"
+  about: About
+  home: home
+  current_time: Current time is %{time}
+  switch_to: Switch to
+
+  article_has: Article has
