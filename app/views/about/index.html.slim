@@ -1,9 +1,15 @@
-h1= t('about')
+h1= t('.title')
 
 = link_to t("home"), root_path
 
 div
-  | #{t('current_time_is')}: #{l @time_now}
+  | #{t('current_time', time: l(@time_now))}
+
+
+div
+  | #{t('article_has')} #{@count} #{t('comment', count: @count)}
+
+div= @user.errors.messages
 
 br
 

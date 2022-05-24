@@ -34,7 +34,25 @@ ru:
   about: О сайте
   home: домой
   current_time_is: Сейчас у нас
+  current_time: Сейчас у нас %{time}
   switch_to: Переключиться на
+  article_has: У статьи
+
+  comment:
+    zero: комментариев
+    one: комментарий
+    few: комментария
+    many: комментариев
+    other: комменатрии
+    accusative: комментария
+    nominative: комментарий 
+    dative: комменатрию
+
+  about:
+    index:
+      title: О нас
+      footer: О нас
+
 
   date:
     formats:

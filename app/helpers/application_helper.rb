@@ -1,5 +1,5 @@
 module ApplicationHelper
   def another_locale
-    cookies[:locale].to_sym == :en ? :ru : :en
+    (session[:locale] || I18n.default_locale).to_sym == :en ? :ru : :en
   end
 end

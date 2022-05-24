@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # around_action :switch_locale
+  before_action :switch_locale
 
   protected
 
@@ -13,11 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def switch_locale(&action)
-    if user_signed_in?
-      locale = current_user.settings_locale || I18n.default_locale
-      I18n.with_locale(locale, &action)
-    else
-      yield
-    end
+    I18n.locale = session[:locale] || I18n.default_locale
   end
 end
