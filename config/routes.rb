@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   get 'locales/switch'
 
   namespace :admin do
-    resources :users
+    resources :users do
+      member do
+        post :activate
+      end
+    end
 
     root "users#index"
   end

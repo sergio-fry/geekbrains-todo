@@ -1,6 +1,6 @@
 module Admin
   class UsersController < AdminController
-    before_action :set_admin_user, :authorize_user, only: %i[ show edit update destroy ]
+    before_action :set_user, :authorize_user, only: %i[ show edit update destroy activate ]
 
     # GET /admin/users or /admin/users.json
     def index
@@ -19,6 +19,10 @@ module Admin
 
     # GET /admin/users/1/edit
     def edit
+    end
+
+    def activate
+      @user.update_attribute :deactivated, !@user.deactivated?
     end
 
     # POST /admin/users or /admin/users.json

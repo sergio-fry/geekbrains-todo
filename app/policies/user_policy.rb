@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def show?
-    return true if user.has_role? :admin
+    return true if admin?
 
     record == user
   end
@@ -14,16 +14,21 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.has_role? :admin
+    admin?
   end
 
   def destroy?
-    if user.has_role?(:admin)
+    if admin?
       record != user
     else
       false
     end
   end
+
+  def activate?
+    admin?
+  end
+
 
   class Scope < Scope
     def resolve

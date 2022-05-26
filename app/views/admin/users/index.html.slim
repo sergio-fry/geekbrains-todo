@@ -4,6 +4,12 @@ h1 Users
 
 
 table#admin_users
+  tr
+    th name
+    th email
+    th role
+    th deactivated
+
   - @users.each do |user|
     = render partial: 'user_in_a_list', locals: { user: user }
 

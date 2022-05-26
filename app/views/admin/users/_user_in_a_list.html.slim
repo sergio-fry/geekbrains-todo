@@ -2,4 +2,5 @@ tr id=dom_id(user) style="background-color: #{cycle('#aaa', '#fff')}"
   td= user.name
   td= user.email
   td= user.role.name
+  td= link_to user.deactivated?.to_s, activate_admin_user_path(user), data: { 'turbo-method': :post }
   td= link_to "Show this user", admin_user_path(user)

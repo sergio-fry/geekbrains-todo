@@ -51,6 +51,10 @@ class User < ApplicationRecord
     role.code.to_sym == code.to_sym
   end
 
+  def active_for_authentication?
+    super && !self.deactivated?
+  end
+
   private
 
   def check_freshness
