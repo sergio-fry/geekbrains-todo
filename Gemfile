@@ -67,6 +67,7 @@ group :development do
   gem "ffaker"
   gem 'rails-erd'
   gem "letter_opener"
+  gem 'rubocop'
 end
 
 group :test do
