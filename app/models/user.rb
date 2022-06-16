@@ -2,20 +2,20 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
 
-  validates :name, length: { maximum: 100 }, presence: true
+  validates :name, length: {maximum: 100}, presence: true
 
   validates :email, uniqueness: true
 
-  scope :admins, -> { where(role_id: Role.find_by(code: 'user')) }
+  scope :admins, -> { where(role_id: Role.find_by(code: "user")) }
 
   store :settings, accessors: %i[notifications site locale], coder: JSON, prefix: :settings
 
   # validates :site, presence: true
 
   # enum :state, [:initial, :active, :suspended] # do not use please
-  enum :state, { active: 1, suspended: 2 }
+  enum :state, {active: 1, suspended: 2}
 
   belongs_to :role
 
@@ -25,12 +25,12 @@ class User < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  has_many :reviews, class_name: 'Comment', through: :events, source: :comments
+  has_many :reviews, class_name: "Comment", through: :events, source: :comments
 
   before_validation :set_default_role
 
-  after_create -> { logger.info 'Created' }
-  after_save -> { logger.info 'Saved' }
+  after_create -> { logger.info "Created" }
+  after_save -> { logger.info "Saved" }
 
   # after_save -> { logger.info "Created" }, if: -> { role.code == 'admin' }
   # after_save -> { logger.info "Created" }, only: [:created]
@@ -65,11 +65,11 @@ class User < ApplicationRecord
   end
 
   def save_wrapper
-    logger.info 'Before save'
+    logger.info "Before save"
 
     yield
 
-    logger.info 'After save'
+    logger.info "After save"
   end
 
   def log_creation
@@ -80,8 +80,7 @@ class User < ApplicationRecord
     self.role ||= Role.find_by code: :user
   end
 
-  # rubocop: disable Style/SymbolProc
-  expose :role, using: 'Entities::Role' do |user|
+  expose :role, using: "Entities::Role" do |user|
     user.role
   end
   # rubocop: enable Style/SymbolProc

@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       end
 
       t.text :content
-      t.boolean :done, comment: 'была ли задача выполнена', null: false, default: false
+      t.boolean :done, comment: "была ли задача выполнена", null: false, default: false
       t.datetime :finished_at
       t.integer :user_id, index: true
 
