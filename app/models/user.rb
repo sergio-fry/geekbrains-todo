@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   scope :admins, -> { where(role_id: Role.find_by(code: 'user')) }
 
-  store :settings, accessors: [:notifications, :site, :locale], coder: JSON, prefix: :settings
+  store :settings, accessors: %i[notifications site locale], coder: JSON, prefix: :settings
 
   # validates :site, presence: true
 
@@ -25,12 +25,12 @@ class User < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  has_many :reviews, class_name: "Comment", through: :events, source: :comments
+  has_many :reviews, class_name: 'Comment', through: :events, source: :comments
 
   before_validation :set_default_role
 
-  after_create -> { logger.info "Created" }
-  after_save -> { logger.info "Saved" }
+  after_create -> { logger.info 'Created' }
+  after_save -> { logger.info 'Saved' }
 
   # after_save -> { logger.info "Created" }, if: -> { role.code == 'admin' }
   # after_save -> { logger.info "Created" }, only: [:created]
@@ -56,9 +56,7 @@ class User < ApplicationRecord
   def check_freshness
     return true unless persisted?
 
-    if load_time < 1.seconds.ago
-      raise ActiveRecord::RecordInvalid
-    end
+    raise ActiveRecord::RecordInvalid if load_time < 1.seconds.ago
   end
 
   def set_load_time
@@ -66,13 +64,12 @@ class User < ApplicationRecord
     Rails.logger.debug "Set load time: #{@load_time}"
   end
 
-
   def save_wrapper
-    logger.info "Before save"
+    logger.info 'Before save'
 
     yield
 
-    logger.info "After save"
+    logger.info 'After save'
   end
 
   def log_creation
@@ -82,4 +79,10 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= Role.find_by code: :user
   end
+
+  # rubocop: disable Style/SymbolProc
+  expose :role, using: 'Entities::Role' do |user|
+    user.role
+  end
+  # rubocop: enable Style/SymbolProc
 end

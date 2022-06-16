@@ -1,6 +1,6 @@
 namespace :fake do
-  desc "Fake all date"
-  task all: [:users, :events, :tags]
+  desc 'Fake all date'
+  task all: %i[users events tags]
 
   task events: :environment do
     Item.destroy_all
@@ -13,7 +13,7 @@ namespace :fake do
         event = user.events.create!(
           name: FFaker::Lorem.sentence[0..25],
           content: FFaker::Lorem.sentence,
-          done: done,
+          done:,
           finished_at: done ? FFaker::Time.datetime : nil
         )
 
@@ -43,7 +43,7 @@ namespace :fake do
       roles.sample.users.create!(
         name: FFaker::Name.name,
         email: FFaker::Internet.email,
-        password: 'secret123', 
+        password: 'secret123',
         state: :active
       )
     end

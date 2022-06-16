@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  def switch_locale(&action)
+  def switch_locale
     I18n.locale = session[:locale] || I18n.default_locale
   end
 end

@@ -15,7 +15,6 @@ namespace :transactions do
         email: FFaker::Internet.email,
         role_id: Role.find_by(code: 'admin').id
       )
-
     end
   end
 end

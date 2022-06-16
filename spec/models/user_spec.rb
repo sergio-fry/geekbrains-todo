@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
 
   it { expect(user).to be_persisted }
 
-
   # 1. write failing test
   # 2. make green
   # 3. refactor
@@ -18,8 +17,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'email' do
-
-    it "create multiple" do
+    it 'create multiple' do
       user1 = create :user
       user2 = create :user
 
@@ -48,13 +46,13 @@ RSpec.describe User, type: :model do
     context 'when sleep a little' do
       before { sleep 0.5 }
       before { user.update email: 'foo@bar' }
-      it { expect(user.reload.email).to eq 'foo@bar'}
+      it { expect(user.reload.email).to eq 'foo@bar' }
     end
 
     context 'when sleep too long' do
       before { sleep 3 }
       before { user.update email: 'foo@bar' }
-      it { expect(user.reload.email).to eq 'bar@foo'}
+      it { expect(user.reload.email).to eq 'bar@foo' }
     end
   end
 end
